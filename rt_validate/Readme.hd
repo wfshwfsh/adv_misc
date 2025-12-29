@@ -1,0 +1,10 @@
+# Why
+* Create a standard testing method & result for rt validation
+
+# What
+* Include RT version: preempt-RT, xenomai3, and xenomai4
+* Recording:
+	* OS version, cpu type, grub settings, swap enable/disable
+	* Stress command
+	* period test command
+

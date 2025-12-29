@@ -1,0 +1,4 @@
+sudo latmus --kernel --cpu=1 -H200 -T2d > latency_log_1128.txt
+
+stress-ng --cpu $(nproc) --timeout 144000 --io 4 --vm 4 --vm-bytes 80% --fork 4 --timer 32 --timer-freq 1000000
+
