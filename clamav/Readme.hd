@@ -1,0 +1,11 @@
+# What
+* This patch for fixing clamav offline install may not have antivirus database
+
+# How to use
+* Find the same ubuntu OS version machine
+* Install clamav (offline or net), and check whether connected to network
+* Run get_clamav_db.sh to download the database file
+* Checking is there a new files/folder name database
+* move to the target board and run patch_clamav_db.sh to install database to system
+
+
