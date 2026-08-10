@@ -1,0 +1,8 @@
+# stress cmd
+stress-ng --cpu $(nproc) --timeout 36000 --io 4 --vm 4 --vm-bytes 50% --fork 4 --timer 32 --timer-freq 1000000
+
+# cyclictest cmd
+sudo taskset -c 3 cyclictest -p 99 -a 3 -t 1 -i 1000 -D 10h
+
+
+

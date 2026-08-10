@@ -9,23 +9,25 @@ GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR=`( . /etc/os-release; echo ${NAME:-Ubuntu} ) 2>/dev/null || echo Ubuntu`
 #GRUB_CMDLINE_LINUX_DEFAULT="quiet splash efi=runtime"
 #GRUB_CMDLINE_LINUX_DEFAULT="rcupdate.rcu_cpu_stall_suppress=1 rcu_nocb_poll art=virtallow"
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash efi=runtime \
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash \
 intel_pstate=disable \
-processor.max_cstate=0 intel_idle.max_cstate=0 idle=poll \
+intel.max_cstate=0 intel_idle.max_cstate=0 \
+processor.max_cstate=0 processor_idle.max_cstate=0 \
+rcupdate.rcu_cpu_stall_suppress=1 \
 noht \
-isolcpus=managed,0-1 \
-nohz_full=0-1 \
-rcu_nocbs=0-1 \
-irqaffinity=2-11 \
-pcie_aspm=off \
-nowatchdog nmi_watchdog=0 \
-hpet=disable \
-mce=off \
+irqaffinity=0 pcie_aspm=off \
+nmi_watchdog=0 nosoftlockup mce=off \
 audit=0 ftrace=0 \
-nosoftlockup no_ipi_broadcast=1 \
 numa_balancing=disable hugepages=1024 \
-art=virtallow \
-clocksource=tsc tsc=reliable"
+clocksource=tsc tsc=reliable hpet=disable
+i915.enable_rc6=0 i915.enable_dc=0 i915.disable_power_well=0 \
+xe.max_vfs=7 \
+xe.enable_dc=0 \
+xe.disable_power_well=0 \
+xd.enable_psr=0 \
+xe.enable_sagv=0 \
+xe.nuclear_pageflip=1 \
+isolcpus=managed,2-3 nohz_full=2-3 rcu_nocbs=2-3"
 
 GRUB_CMDLINE_LINUX=""
 

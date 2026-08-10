@@ -1,0 +1,29 @@
+
+# Set CPU in performance
+for policy in /sys/devices/system/cpu/cpufreq/policy*;
+do
+   if [ -w "$policy/scaling_governor" ];
+then
+      echo performance > "$policy/scaling_governor"
+   fi
+done
+
+# Affine kernel worqueue to housekeeping cpus
+for wq in /sys/devices/virtual/workqueue/*; do
+   if [ -w "$wq/cpumask" ]; then
+      echo 7F > "$wq/cpumask"
+   fi
+done
+
+
+# Switch to root to do the following
+
+echo 0 > /sys/kernel/tracing/tracing_on
+echo 0 > /proc/sys/kernel/timer_migration 
+echo -1 > /proc/sys/kernel/sched_rt_runtime_us 
+
+
+
+
+# latency test cmd
+sudo cyclictest -p99 -a7 -t1 -i1000 -D10h -mlockall
